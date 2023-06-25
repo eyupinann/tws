@@ -1,0 +1,46 @@
+name: Payments
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/payment
+    metadata:
+      groupName: Payments
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List Payments'
+      description: 'List the payments of the user.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer hvaega546bP8EV16ZfDcd3k'
+    controller: null
+    method: null
+    route: null
+    custom: []

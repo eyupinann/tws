@@ -1,0 +1,971 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/v1/appointment:
+    get:
+      summary: 'List Appointment'
+      operationId: listAppointment
+      description: 'List the appointments of the user.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Appointments
+    post:
+      summary: 'Create Appointment'
+      operationId: createAppointment
+      description: 'Create a appointment for user with given parameters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Appointments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: reiciendis
+                doctor_id:
+                  type: string
+                  description: ''
+                  example: quis
+                clinic_id:
+                  type: string
+                  description: ''
+                  example: autem
+                treatment_id:
+                  type: string
+                  description: ''
+                  example: dolor
+                appointment_time:
+                  type: string
+                  description: ''
+                  example: est
+              required:
+                - user_id
+                - doctor_id
+                - clinic_id
+                - treatment_id
+                - appointment_time
+  '/api/v1/appointment/{id}':
+    get:
+      summary: 'View Appointments'
+      operationId: viewAppointments
+      description: 'View the appointments details'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Appointments
+    put:
+      summary: 'Update Appointment'
+      operationId: updateAppointment
+      description: 'Update the appointment with given paramaters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Appointments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: non
+                doctor_id:
+                  type: string
+                  description: ''
+                  example: cum
+                clinic_id:
+                  type: string
+                  description: ''
+                  example: occaecati
+                treatment_id:
+                  type: string
+                  description: ''
+                  example: quaerat
+                appointment_time:
+                  type: string
+                  description: ''
+                  example: aut
+              required:
+                - user_id
+                - doctor_id
+                - clinic_id
+                - treatment_id
+                - appointment_time
+    delete:
+      summary: 'Delete Appointment'
+      operationId: deleteAppointment
+      description: 'Delete the given appointment.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Appointments
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the appointment.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/register:
+    post:
+      summary: Register
+      operationId: register
+      description: 'Register the user with given data if valid.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: ut
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: goyette.berta@example.net
+                password:
+                  type: string
+                  description: 'Password for the user.'
+                  example: '9O6@(5w\\ZM~[X%pQ'
+              required:
+                - name
+      security: []
+  /api/v1/login:
+    post:
+      summary: Login
+      operationId: login
+      description: 'Login the user with given data if valid.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: langworth.bernadette@example.com
+                password:
+                  type: string
+                  description: 'Password for the user.'
+                  example: 8d<$I/s
+      security: []
+  /api/v1/profile-edit:
+    post:
+      summary: 'Profile Update'
+      operationId: profileUpdate
+      description: 'Profile Update the user with given data if valid.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name for the user.'
+                  example: sint
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: genoveva96@example.com
+                password:
+                  type: string
+                  description: 'Password for the user.'
+                  example: '<3L4w_[vLc^lw`@'
+                surname:
+                  type: string
+                  description: 'Surname for the user.'
+                  example: officia
+                phone:
+                  type: string
+                  description: 'Phone for the user.'
+                  example: corrupti
+  '/api/v1/destroy/{id}':
+    get:
+      summary: 'Destroy User'
+      operationId: destroyUser
+      description: 'Destroy User with given parameters'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Auth
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the destroy.'
+        example: esse
+        required: true
+        schema:
+          type: string
+  /api/v1/detail:
+    get:
+      summary: Profile
+      operationId: profile
+      description: 'Profile Detail'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Auth
+  /api/v1/clinic:
+    get:
+      summary: 'List Clinics'
+      operationId: listClinics
+      description: 'List the clinics of the user.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Clinics
+    post:
+      summary: 'Create Clinic'
+      operationId: createClinic
+      description: 'Create a clinics for user with given parameters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Clinics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: quos
+                opening_hour:
+                  type: string
+                  description: ''
+                  example: fugit
+                closing_hour:
+                  type: string
+                  description: ''
+                  example: labore
+              required:
+                - name
+                - opening_hour
+                - closing_hour
+  '/api/v1/clinic/{id}':
+    get:
+      summary: 'View Clinic'
+      operationId: viewClinic
+      description: 'View the clinic details'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Clinics
+    put:
+      summary: 'Update Clinic'
+      operationId: updateClinic
+      description: 'Update the clinic with given paramaters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Clinics
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: null
+                opening_hour:
+                  type: string
+                  description: ''
+                  example: null
+                closing_hour:
+                  type: string
+                  description: ''
+                  example: null
+    delete:
+      summary: 'Delete Clinic'
+      operationId: deleteClinic
+      description: 'Delete the given clinic.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Clinics
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the clinic.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/doctor:
+    get:
+      summary: 'List Doctors'
+      operationId: listDoctors
+      description: 'List the doctors of the user.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Doctors
+    post:
+      summary: 'Create Doctor'
+      operationId: createDoctor
+      description: 'Create a doctor for user with given parameters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Doctors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: earum
+              required:
+                - name
+  '/api/v1/doctor/{id}':
+    get:
+      summary: 'View Doctor'
+      operationId: viewDoctor
+      description: 'View the doctor details'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Doctors
+    put:
+      summary: 'Update Doctor'
+      operationId: updateDoctor
+      description: 'Update the doctor with given paramaters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Doctors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: tempore
+              required:
+                - name
+    delete:
+      summary: 'Delete Doctor'
+      operationId: deleteDoctor
+      description: 'Delete the given doctor.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Doctors
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the doctor.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/role/{id}':
+    get:
+      summary: 'View Roles'
+      operationId: viewRoles
+      description: 'View the roles details'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+    put:
+      summary: 'Update Role'
+      operationId: updateRole
+      description: 'Update the roles with given paramaters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: autem
+              required:
+                - name
+    delete:
+      summary: 'Delete Role'
+      operationId: deleteRole
+      description: 'Delete the given role.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the role.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/payment:
+    get:
+      summary: 'List Payments'
+      operationId: listPayments
+      description: 'List the payments of the user.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Payments
+  /api/v1/role:
+    get:
+      summary: 'List Role'
+      operationId: listRole
+      description: 'List the roles of the user.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Roles
+    post:
+      summary: 'Create Role'
+      operationId: createRole
+      description: 'Create a roles for user with given parameters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Roles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: voluptatem
+              required:
+                - name
+  /api/v1/treatment:
+    get:
+      summary: 'List Treatments'
+      operationId: listTreatments
+      description: 'List the treatments of the user.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Treatments
+    post:
+      summary: 'Create Role'
+      operationId: createRole
+      description: 'Create a roles for user with given parameters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Treatments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: laudantium
+              required:
+                - name
+  '/api/v1/treatment/{id}':
+    get:
+      summary: 'View Treatment'
+      operationId: viewTreatment
+      description: 'View the treatment details'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Treatments
+    put:
+      summary: 'Update Treatment'
+      operationId: updateTreatment
+      description: 'Update the treatment with given paramaters.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Treatments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: provident
+              required:
+                - name
+    delete:
+      summary: 'Delete Treatment'
+      operationId: deleteTreatment
+      description: 'Delete the given treatment.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Treatments
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the treatment.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Appointments
+    description: ''
+  -
+    name: Auth
+    description: ''
+  -
+    name: Clinics
+    description: ''
+  -
+    name: Doctors
+    description: ''
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Payments
+    description: ''
+  -
+    name: Roles
+    description: ''
+  -
+    name: Treatments
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []
